@@ -7,8 +7,7 @@ namespace Autopark.Creator
     {
         public static string CreatePath(string fileName)
         {
-            string workingDirectory = Environment.CurrentDirectory;
-            string path = Directory.GetParent(workingDirectory).Parent.FullName + @"\Data\"+ fileName;
+            string path = Directory.GetCurrentDirectory() + "\\Data\\" + fileName;
 
             try
             {

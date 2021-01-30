@@ -18,13 +18,13 @@ namespace Autopark
             // 4 level
             //AbstarctionController.Start();
             // 5 level
-            //CollectionsController.Start();
+            CollectionsController.Start();
             // 6 level
             //QueueController.Start();
             // 7 level
             //StackController.Start();
             // 8 level
-            DictionaryController.Start();
+            //DictionaryController.Start();
         }
 
     }
