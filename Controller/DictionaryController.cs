@@ -7,15 +7,14 @@ namespace Autopark.Controller
     public class DictionaryController
     {
         private const string ORDERS_PATH = "orders.csv";
+        private static char[] SEPARATOR = new char[] { ',', '\n', '\r' };
 
         public static void Start()
         {
             Dictionary<string, int> orders = new Dictionary<string, int>();
 
             string path = LoadFile.CreatePath(ORDERS_PATH);
-            string text =  LoadFile.ReadAllText(path);
-
-            var details = text.Split(new char[] { ',', '\r', '\n' }, StringSplitOptions.RemoveEmptyEntries);
+            var details =  LoadFile.GetStrings(path, SEPARATOR);
 
             FillDictionary(ref orders, details);
 

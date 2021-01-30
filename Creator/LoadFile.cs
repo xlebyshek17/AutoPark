@@ -7,12 +7,13 @@ namespace Autopark.Creator
     {
         public static string CreatePath(string fileName)
         {
-            string path = @"V:\dev\AutoparkProject\Autopark\Data\" + fileName;
+            string workingDirectory = Environment.CurrentDirectory;
+            string path = Directory.GetParent(workingDirectory).Parent.FullName + @"\Data\"+ fileName;
 
             try
             {
                 if (!File.Exists(path))
-                    throw new Exception("File don't exist");
+                    throw new FileNotFoundException("File don't exist");
             }
             catch (Exception ex)
             {
@@ -22,19 +23,11 @@ namespace Autopark.Creator
             return path;
         }
 
-        public static string[] GetStrings(string path)
+        public static string[] GetStrings(string path, char[] separator)
         {
             using (StreamReader st = File.OpenText(path))
             {
-                return File.ReadAllLines(path);
-            }
-        }
-
-        public static string ReadAllText(string path)
-        {
-            using (StreamReader st = File.OpenText(path))
-            {
-                return File.ReadAllText(path);
+                return st.ReadToEnd().Split(separator, StringSplitOptions.RemoveEmptyEntries);
             }
         }
     }

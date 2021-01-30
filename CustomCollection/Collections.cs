@@ -9,6 +9,7 @@ namespace Autopark.CustomCollection
 {
     public class Collections
     {
+        private readonly char[] SEPARATOR = new char[] { '\n', '\r' };
         public List<VehicleType> Types { get; }
         public List<Vehicle> Vehicles { get; }
         public List<Rent> Rents { get; }
@@ -22,7 +23,7 @@ namespace Autopark.CustomCollection
 
         public List<VehicleType> LoadTypes(string fileName)
         {
-            string[] lines = LoadFile.GetStrings(LoadFile.CreatePath(fileName));
+            string[] lines = LoadFile.GetStrings(LoadFile.CreatePath(fileName), SEPARATOR);
             List<VehicleType> vehicleTypes = new List<VehicleType>();
 
             foreach (var line in lines)
@@ -35,7 +36,7 @@ namespace Autopark.CustomCollection
 
         public List<Vehicle> LoadVehicles(string fileName)
         {
-            string[] lines = LoadFile.GetStrings(LoadFile.CreatePath(fileName));
+            string[] lines = LoadFile.GetStrings(LoadFile.CreatePath(fileName), SEPARATOR);
             List<Vehicle> vehicles = new List<Vehicle>();
 
             foreach (var line in lines)
@@ -48,7 +49,7 @@ namespace Autopark.CustomCollection
 
         public List<Rent> LoadRents(string fileName)
         {
-            string[] lines = LoadFile.GetStrings(LoadFile.CreatePath(fileName));
+            string[] lines = LoadFile.GetStrings(LoadFile.CreatePath(fileName), SEPARATOR);
             List<Rent> rents = new List<Rent>();
 
             foreach (var line in lines)
