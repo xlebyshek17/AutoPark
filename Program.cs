@@ -1,6 +1,8 @@
-﻿using Autopark.Controller;
-using System;
+﻿using System;
+using System.Threading;
 using System.Collections.Generic;
+using System.Globalization;
+using Autopark.Controller;
 using System.Text;
 
 namespace Autopark
@@ -9,8 +11,16 @@ namespace Autopark
     {
         public static void Main(string[] Args)
         {
+            Thread.CurrentThread.CurrentCulture = new CultureInfo("en-US") 
+            { 
+                NumberFormat = new NumberFormatInfo()
+                {
+                    NumberDecimalSeparator = "."
+                }
+            };
+
             // 1 level
-            //ClassesController.Start(); 
+            ClassesController.Start(); 
             //2 level
             //InterfacesController.Start();
             // 3 level
@@ -18,7 +28,7 @@ namespace Autopark
             // 4 level
             //AbstarctionController.Start();
             // 5 level
-            CollectionsController.Start();
+            //CollectionsController.Start();
             // 6 level
             //QueueController.Start();
             // 7 level
